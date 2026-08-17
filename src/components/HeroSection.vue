@@ -40,16 +40,6 @@ const scrollToSection = (id: string) => {
     >
       <!-- Text Content -->
       <div class="max-w-2xl text-left flex flex-col items-start w-full">
-        <!-- Startup Pill Badge -->
-        <div
-          class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200 text-sm font-medium text-slate-600 mb-6 shadow-sm animate-fade-in"
-        >
-          <span
-            class="flex h-2 w-2 rounded-full bg-[#00007f] animate-pulse"
-          ></span>
-          Welcome to Wabtech
-        </div>
-
         <!-- SCALED DOWN HEADING: Now text-3xl md:text-4xl -->
         <h1
           class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4 animate-slide-up text-slate-900 leading-tight"
