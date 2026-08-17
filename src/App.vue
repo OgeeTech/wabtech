@@ -1,8 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import HeroSection from "@/components/HeroSection.vue";
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>welcome to your new Vue.js app</p>
+  <main>
+    <HeroSection />
+  </main>
 </template>
 
 <style scoped></style>
