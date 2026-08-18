@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { Layers, Activity, Users2, Fingerprint } from "lucide-vue-next";
 
-// Simplified state: removed the background box colors.
-// Now just defining a subtle tint for the icon itself on hover.
 const strengths = [
   {
     title: "Innovation at the Core",
@@ -84,14 +82,12 @@ const strengths = [
               :key="index"
               class="flex items-start gap-6 group cursor-pointer"
             >
-              <!-- Naked Icon (No background box, slightly larger, thinner stroke) -->
               <div
                 :class="[
                   'flex-shrink-0 pt-0.5 text-slate-300 transition-colors duration-300',
                   strength.iconHover,
                 ]"
               >
-                <!-- stroke-width="1.5" makes it look more elegant and modern -->
                 <component
                   :is="strength.icon"
                   class="w-8 h-8"
@@ -99,7 +95,7 @@ const strengths = [
                 />
               </div>
 
-              <!-- Text Content with CSS Grid slide-in -->
+              >
               <div class="flex-1 border-b border-slate-100 pb-4">
                 <h3
                   class="text-lg font-bold text-slate-800 group-hover:text-slate-900 transition-colors"
@@ -107,7 +103,6 @@ const strengths = [
                   {{ strength.title }}
                 </h3>
 
-                <!-- The Magic Sliding Container -->
                 <div
                   class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-in-out"
                 >
