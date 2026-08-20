@@ -1,9 +1,7 @@
-<!-- src/components/NavBar.vue -->
 <script setup lang="ts">
 import { ref } from "vue";
 import { Menu, X } from "lucide-vue-next";
 
-// State for the mobile menu toggle
 const isMobileMenuOpen = ref(false);
 
 // Navigation links data to keep the template clean
@@ -16,8 +14,7 @@ const navLinks = [
 ];
 
 const scrollToSection = (id: string) => {
-  isMobileMenuOpen.value = false; // Close mobile menu when a link is clicked
-  // If we're linking to an ID on the same page, scroll to it
+  isMobileMenuOpen.value = false;
   if (id.startsWith("#")) {
     const elementId = id.replace("#", "");
     document.getElementById(elementId)?.scrollIntoView({ behavior: "smooth" });
@@ -26,12 +23,10 @@ const scrollToSection = (id: string) => {
 </script>
 
 <template>
-  <!-- Fixed header with a blur effect -->
   <header
     class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 transition-all duration-300"
   >
     <div class="container mx-auto px-6 h-20 flex items-center justify-between">
-      <!-- Brand / Logo -->
       <a
         href="#home"
         @click.prevent="scrollToSection('#home')"
@@ -42,7 +37,6 @@ const scrollToSection = (id: string) => {
         >
       </a>
 
-      <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center gap-8">
         <a
           v-for="link in navLinks"
@@ -55,7 +49,6 @@ const scrollToSection = (id: string) => {
         </a>
       </nav>
 
-      <!-- Desktop CTA Button -->
       <div class="hidden md:flex items-center">
         <button
           type="button"
@@ -107,7 +100,6 @@ const scrollToSection = (id: string) => {
 </template>
 
 <style scoped>
-/* Smooth slide down animation for the mobile menu */
 .slide-down-enter-active,
 .slide-down-leave-active {
   transition: all 0.3s ease-out;

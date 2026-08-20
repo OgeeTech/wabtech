@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from "vue";
 import { Layers, Activity, Users2, Fingerprint } from "lucide-vue-next";
 
 const strengths = [
@@ -7,39 +8,71 @@ const strengths = [
     description:
       "We don't just follow trends; we leverage the latest technologies to future-proof your digital assets.",
     icon: Layers,
-    iconHover: "group-hover:text-amber-500",
+    mobileActive: "max-lg:text-amber-500",
+    desktopHover: "lg:group-hover:text-amber-500",
   },
   {
     title: "Agile & Fast Delivery",
     description:
       "Our streamlined workflows mean we ship high-quality products faster, without compromising on performance.",
     icon: Activity,
-    iconHover: "group-hover:text-cyan-500",
+    mobileActive: "max-lg:text-cyan-500",
+    desktopHover: "lg:group-hover:text-cyan-500",
   },
   {
     title: "Client-Centric Approach",
     description:
       "Your vision is our priority. We collaborate closely with you at every step of the development cycle.",
     icon: Users2,
-    iconHover: "group-hover:text-emerald-500",
+    mobileActive: "max-lg:text-emerald-500",
+    desktopHover: "lg:group-hover:text-emerald-500",
   },
   {
     title: "Uncompromising Security",
     description:
       "From code architecture to UI/UX, we adhere to strict standards to ensure robust, secure, and scalable solutions.",
     icon: Fingerprint,
-    iconHover: "group-hover:text-violet-500",
+    mobileActive: "max-lg:text-violet-500",
+    desktopHover: "lg:group-hover:text-violet-500",
   },
 ];
+
+const activeIndex = ref(0);
+const itemRefs = ref<HTMLElement[]>([]);
+let observer: IntersectionObserver | null = null;
+
+onMounted(() => {
+  observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = Number((entry.target as HTMLElement).dataset.index);
+          activeIndex.value = index;
+        }
+      });
+    },
+    {
+      rootMargin: "-30% 0px -30% 0px",
+      threshold: 0,
+    },
+  );
+
+  itemRefs.value.forEach((el) => {
+    if (el) observer?.observe(el);
+  });
+});
+
+onUnmounted(() => {
+  observer?.disconnect();
+});
 </script>
 
 <template>
-  <section id="about" class="py-24 bg-white text-slate-900">
+  <section id="about" class="py-12 lg:py-24 bg-white text-slate-900">
     <div class="container mx-auto px-6">
       <div class="flex flex-col lg:flex-row items-stretch gap-16 lg:gap-20">
         <!-- Left Side: Image -->
         <div class="w-full lg:w-1/2 relative flex items-center">
-          <!-- Subtle offset background block -->
           <div
             class="absolute -inset-4 bg-slate-50 rounded-3xl transform -rotate-3 -z-10 transition-transform duration-500 hover:rotate-0"
           ></div>
@@ -55,7 +88,6 @@ const strengths = [
           </div>
         </div>
 
-        <!-- Right Side: Text & Expandable Icon Bullets -->
         <div class="w-full lg:w-1/2 flex flex-col justify-center">
           <div class="flex items-center gap-4 mb-4 self-start">
             <span
@@ -78,17 +110,25 @@ const strengths = [
             committed to delivering excellence.
           </p>
 
-          <!-- The Hover-Expand Bullet Points (Borderless & Clean) -->
+          <!-- The Scroll-Spy Bullet Points -->
           <div class="space-y-6 w-full">
             <div
               v-for="(strength, index) in strengths"
               :key="index"
+              :data-index="index"
+              :ref="
+                (el) => {
+                  if (el) itemRefs[index] = el as HTMLElement;
+                }
+              "
+              @click="activeIndex = index"
               class="flex items-start gap-6 group cursor-pointer"
             >
               <div
                 :class="[
                   'flex-shrink-0 pt-0.5 text-slate-300 transition-colors duration-300',
-                  strength.iconHover,
+                  activeIndex === index ? strength.mobileActive : '',
+                  strength.desktopHover,
                 ]"
               >
                 <component
@@ -105,9 +145,14 @@ const strengths = [
                   {{ strength.title }}
                 </h3>
 
-                <!-- UPDATED MOBILE FIX: Added grid-rows-[1fr] by default, and lg:grid-rows-[0fr] for desktop -->
                 <div
-                  class="grid grid-rows-[1fr] lg:grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-in-out"
+                  :class="[
+                    'grid transition-[grid-template-rows] duration-500 ease-in-out',
+                    activeIndex === index
+                      ? 'max-lg:grid-rows-[1fr]'
+                      : 'max-lg:grid-rows-[0fr]',
+                    'lg:grid-rows-[0fr] lg:group-hover:grid-rows-[1fr]',
+                  ]"
                 >
                   <div class="overflow-hidden">
                     <p class="text-slate-500 leading-relaxed mt-2 text-sm pr-4">

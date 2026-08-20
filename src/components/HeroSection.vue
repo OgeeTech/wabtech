@@ -1,4 +1,3 @@
-<!-- src/components/HeroSection.vue -->
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
 import { GraduationCap, Code2, ArrowRight } from "lucide-vue-next";
@@ -45,7 +44,7 @@ const scrollToSection = (id: string) => {
           class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4 animate-slide-up text-slate-900 leading-tight"
         >
           We Build Superior
-          <!-- The auto-changing text wrapper with mode="out-in" to prevent overlap -->
+
           <div class="block text-[#00007f] h-[1.2em] mt-2">
             <Transition name="slide-up" mode="out-in">
               <span :key="currentIndex" class="inline-block">
@@ -55,7 +54,6 @@ const scrollToSection = (id: string) => {
           </div>
         </h1>
 
-        <!-- SCALED DOWN PARAGRAPH: Now text-base -->
         <p
           class="text-base text-slate-600 mb-10 mt-4 max-w-lg leading-relaxed animate-fade-in"
           style="animation-delay: 0.3s"
@@ -66,12 +64,10 @@ const scrollToSection = (id: string) => {
           tomorrow.
         </p>
 
-        <!-- Buttons -->
         <div
           class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto animate-scale-in"
           style="animation-delay: 0.6s"
         >
-          <!-- Primary Solid Blue Button -->
           <button
             type="button"
             @click="scrollToSection('services')"
@@ -84,7 +80,6 @@ const scrollToSection = (id: string) => {
             />
           </button>
 
-          <!-- Academy Outline Button -->
           <button
             type="button"
             @click="scrollToSection('academy')"
@@ -96,7 +91,6 @@ const scrollToSection = (id: string) => {
         </div>
       </div>
 
-      <!-- Hero Animation -->
       <div
         class="hidden lg:block w-full lg:w-1/2 relative animate-fade-in"
         style="animation-delay: 0.4s"
