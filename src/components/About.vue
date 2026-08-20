@@ -63,9 +63,9 @@ const strengths = [
             >
               Who We Are
             </span>
-            <!-- The single solid line -->
             <span class="w-12 h-[2px] bg-[#00007f]/50"></span>
           </div>
+
           <h2
             class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 mb-6 leading-[1.15]"
           >
@@ -98,7 +98,6 @@ const strengths = [
                 />
               </div>
 
-              >
               <div class="flex-1 border-b border-slate-100 pb-4">
                 <h3
                   class="text-lg font-bold text-slate-800 group-hover:text-slate-900 transition-colors"
@@ -106,8 +105,9 @@ const strengths = [
                   {{ strength.title }}
                 </h3>
 
+                <!-- UPDATED MOBILE FIX: Added grid-rows-[1fr] by default, and lg:grid-rows-[0fr] for desktop -->
                 <div
-                  class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-in-out"
+                  class="grid grid-rows-[1fr] lg:grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-in-out"
                 >
                   <div class="overflow-hidden">
                     <p class="text-slate-500 leading-relaxed mt-2 text-sm pr-4">
