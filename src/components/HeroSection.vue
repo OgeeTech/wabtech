@@ -33,10 +33,10 @@ const scrollToSection = (id: string) => {
 <template>
   <section
     id="home"
-    class="min-h-screen flex items-center justify-center relative overflow-hidden bg-white text-slate-900 selection:bg-[#00007f] selection:text-white"
+    class="relative overflow-hidden bg-white text-slate-900 selection:bg-[#00007f] selection:text-white lg:min-h-screen flex items-center"
   >
     <div
-      class="container mx-auto px-6 pt-24 text-center relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12"
+      class="container mx-auto px-6 pt-32 pb-20 lg:pt-28 lg:pb-12 text-center relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12"
     >
       <!-- Text Content -->
       <div class="max-w-2xl text-left flex flex-col items-start w-full">
