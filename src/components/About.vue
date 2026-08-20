@@ -68,7 +68,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section id="about" class="py-12 lg:py-24 bg-white text-slate-900">
+  <section id="about" class="py-12 bg-white text-slate-900">
     <div class="container mx-auto px-6">
       <div class="flex flex-col lg:flex-row items-stretch gap-16 lg:gap-20">
         <!-- Left Side: Image -->
