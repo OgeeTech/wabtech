@@ -45,10 +45,10 @@ const strengths = [
           ></div>
 
           <div
-            class="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-white border border-slate-50"
+            class="relative w-full overflow-hidden shadow-2xl bg-white border border-slate-50"
           >
             <img
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
+              src="/about.jpeg"
               alt="Wabtech team collaborating"
               class="w-full h-full object-cover aspect-[4/3] hover:scale-105 transition-transform duration-700 ease-out"
             />
@@ -57,12 +57,15 @@ const strengths = [
 
         <!-- Right Side: Text & Expandable Icon Bullets -->
         <div class="w-full lg:w-1/2 flex flex-col justify-center">
-          <div
-            class="inline-flex items-center gap-2 px-3 py-1 text-sm font-bold text-[#00007f] mb-4 self-start tracking-wide uppercase"
-          >
-            Who We Are
+          <div class="flex items-center gap-4 mb-4 self-start">
+            <span
+              class="text-sm font-bold text-[#00007f] tracking-wide uppercase"
+            >
+              Who We Are
+            </span>
+            <!-- The single solid line -->
+            <span class="w-12 h-[2px] bg-[#00007f]/50"></span>
           </div>
-
           <h2
             class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 mb-6 leading-[1.15]"
           >
